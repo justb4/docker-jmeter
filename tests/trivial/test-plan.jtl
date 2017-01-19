@@ -1,0 +1,3 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
+1484834651043,199,HTML Page Test,200,OK,Scenario 1 1-1,text,true,,17486,180,1,1,199,0,155
+1484834652276,14,HTML Page Test,200,OK,Scenario 1 1-1,text,true,,17486,180,1,1,14,0,0

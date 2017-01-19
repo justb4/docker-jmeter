@@ -1,0 +1,60 @@
+2017/01/19 14:04:05 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_US 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Loading user properties from: /opt/apache-jmeter-3.1/bin/user.properties 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Loading system properties from: /opt/apache-jmeter-3.1/bin/system.properties 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Setting System property: log_level.jmeter=DEBUG 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Setting JMeter property: TARGET_SERVER=www.map5.nl 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Setting JMeter property: TARGET_PATH=/kaarten.html 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Setting JMeter property: TARGET_KEYWORD=Kaartdiensten 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Copyright (c) 1998-2016 The Apache Software Foundation 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Version 3.1 r1770033 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: java.version=1.7.0_121 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: java.vm.name=OpenJDK 64-Bit Server VM 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: os.name=Linux 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: os.arch=amd64 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: os.version=3.13.0-91-generic 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: file.encoding=UTF-8 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Max memory     =2911698944 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Available Processors =1 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Default Locale=English (United States) 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: JMeter  Locale=English (United States) 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: JMeterHome=/opt/apache-jmeter-3.1 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: user.dir  =/home/vagrant/project/jmeter/docker 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: PWD       =/home/vagrant/project/jmeter/docker 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: IP: 172.17.0.2 Name: b9e16c401fe9 FullName: b9e16c401fe9 
+2017/01/19 14:04:05 INFO  - jmeter.services.FileServer: Default base='/home/vagrant/project/jmeter/docker' 
+2017/01/19 14:04:05 INFO  - jmeter.services.FileServer: Set new base='/home/vagrant/project/jmeter/docker/tests/trivial' 
+2017/01/19 14:04:05 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
+2017/01/19 14:04:05 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
+2017/01/19 14:04:05 INFO  - jmeter.save.SaveService: Using SaveService properties version 3.1 
+2017/01/19 14:04:05 INFO  - jmeter.save.SaveService: All converter versions present and correct 
+2017/01/19 14:04:05 INFO  - jmeter.save.SaveService: Loading file: tests/trivial/test-plan.jmx 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser 
+2017/01/19 14:04:05 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Creating summariser <summary> 
+2017/01/19 14:04:05 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
+2017/01/19 14:04:05 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2017/01/19 14:04:05 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2017/01/19 14:04:05 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
+2017/01/19 14:04:05 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
+2017/01/19 14:04:05 INFO  - jmeter.JMeter: Running test (1484834645927) 
+2017/01/19 14:04:05 INFO  - jmeter.engine.StandardJMeterEngine: Starting ThreadGroup: 1 : Scenario 1 
+2017/01/19 14:04:05 INFO  - jmeter.engine.StandardJMeterEngine: Starting 1 threads for group Scenario 1. 
+2017/01/19 14:04:05 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
+2017/01/19 14:04:05 INFO  - jmeter.threads.ThreadGroup: Starting thread group number 1 threads 1 ramp-up 2 perThread 2000.0 delayedStart=false 
+2017/01/19 14:04:05 INFO  - jmeter.threads.ThreadGroup: Started thread group number 1 
+2017/01/19 14:04:05 INFO  - jmeter.engine.StandardJMeterEngine: All thread groups have been started 
+2017/01/19 14:04:10 INFO  - jmeter.threads.JMeterThread: Thread started: Scenario 1 1-1 
+2017/01/19 14:04:10 INFO  - jmeter.protocol.http.sampler.HTTPHCAbstractImpl: Local host = b9e16c401fe9 
+2017/01/19 14:04:10 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: HTTP request retry count = 0 
+2017/01/19 14:04:11 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are START times 
+2017/01/19 14:04:11 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
+2017/01/19 14:04:11 INFO  - jmeter.samplers.SampleResult: sampleresult.useNanoTime=true 
+2017/01/19 14:04:11 INFO  - jmeter.samplers.SampleResult: sampleresult.nanoThreadSleep=5000 
+2017/01/19 14:04:13 INFO  - jmeter.threads.JMeterThread: Thread is done: Scenario 1 1-1 
+2017/01/19 14:04:13 INFO  - jmeter.threads.JMeterThread: Thread finished: Scenario 1 1-1 
+2017/01/19 14:04:13 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
+2017/01/19 14:04:13 INFO  - jmeter.reporters.Summariser: summary =      2 in 00:00:07 =    0.3/s Avg:   106 Min:    14 Max:   199 Err:     0 (0.00%) 
