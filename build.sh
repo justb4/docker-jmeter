@@ -1,1 +1,1 @@
-sudo docker build -t="justb4/jmeter:3.1" .
+sudo docker build -t="justobjects/jmeter:3.1" .
