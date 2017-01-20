@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Run MapFish Print3 Docker image with options
+# Run JMeter Docker image with options
 
 NAME="jmeter"
 IMAGE="justb4/jmeter:3.1"
