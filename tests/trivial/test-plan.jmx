@@ -32,8 +32,8 @@ Make test last 1 minute (see Scheduler)</stringProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${TARGET_SERVER}</stringProp>
-          <stringProp name="HTTPSampler.port">80</stringProp>
+          <stringProp name="HTTPSampler.domain">${TARGET_HOST}</stringProp>
+          <stringProp name="HTTPSampler.port">${TARGET_PORT}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout">5000</stringProp>
           <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
@@ -91,10 +91,16 @@ Connect to 5s</stringProp>
         </hashTree>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
-            <elementProp name="TARGET_SERVER" elementType="Argument">
-              <stringProp name="Argument.name">TARGET_SERVER</stringProp>
-              <stringProp name="Argument.value">${__P(TARGET_SERVER,www.kadaster.nl)}</stringProp>
+            <elementProp name="TARGET_HOST" elementType="Argument">
+              <stringProp name="Argument.name">TARGET_HOST</stringProp>
+              <stringProp name="Argument.value">${__P(TARGET_HOST,www.kadaster.nl)}</stringProp>
               <stringProp name="Argument.desc">target server domain/IP for testing</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="TARGET_PORT" elementType="Argument">
+              <stringProp name="Argument.name">TARGET_PORT</stringProp>
+              <stringProp name="Argument.value">${__P(TARGET_PORT,80)}</stringProp>
+              <stringProp name="Argument.desc">target port on TARGET_HOST for testing</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="TARGET_PATH" elementType="Argument">

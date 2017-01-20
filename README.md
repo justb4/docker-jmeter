@@ -47,7 +47,7 @@ The Docker image built from the
 See https://hub.docker.com/_/alpine/ for Alpine Docker images.
 
 The Docker image will install (via Alpine ``apk``) several required packages most specificly
-the ``OpenJDK Java JRE``.  JMeter is installed by simply downloading/unpacking a ``.tgz` archive
+the ``OpenJDK Java JRE``.  JMeter is installed by simply downloading/unpacking a ``.tgz`` archive
 from http://mirror.serversupportforum.de/apache/jmeter/binaries within the Docker image.
 
 A generic [entrypoint.sh](entrypoint.sh) is copied into the Docker image and
