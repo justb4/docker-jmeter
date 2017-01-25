@@ -1,5 +1,7 @@
 # docker-jmeter
 
+[![](https://images.microbadger.com/badges/image/justb4/jmeter.svg)](https://microbadger.com/images/justb4/jmeter "Get your own image badge on microbadger.com")
+
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 The aim is to have a Docker image that can be run as the ``jmeter`` command
 itself.
@@ -12,7 +14,12 @@ you may use your own ``docker build`` commandline.
 
 ### Build Options
 
-None specific right now.  NB timezone setting is not working yet.
+Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
+
+- **JMETER_VERSION** - JMeter version, default ``3.1``
+- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
+
+NB **IMAGE_TIMEZONE** setting is not working yet.
 
 ## Running
 
