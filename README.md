@@ -1,10 +1,10 @@
+[![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
+
 # docker-jmeter
 
-[![](https://images.microbadger.com/badges/image/justb4/jmeter.svg)](https://microbadger.com/images/justb4/jmeter "Get your own image badge on microbadger.com")
-
 Docker image for [Apache JMeter](http://jmeter.apache.org).
-The aim is to have a Docker image that can be run as the ``jmeter`` command
-itself.
+This Docker image can be run as the ``jmeter`` command. 
+Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
 
 ## Building
 
