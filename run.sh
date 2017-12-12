@@ -3,7 +3,7 @@
 # Run JMeter Docker image with options
 
 NAME="jmeter"
-IMAGE="justobjects/jmeter:3.1"
+IMAGE="justb4/jmeter:3.3"
 
 # Use the current working dir
 WORK_DIR="`pwd`"
