@@ -2,13 +2,57 @@
 
 # docker-jmeter
 
-## Do it
+## Do it for reals
 
 1. In a Terminal/Command session, install Git, navigate/make a folder, then:
 
    ```
    git clone https://github.com/justb4/docker-jmeter.git
+   cd docker-jmeter
    ```
+
+1. Run the Build script, which downloads the Docker image from [https://hub.docker.com/r/justb4/jmeter](https://hub.docker.com/r/justb4/jmeter).
+
+   ```
+   ./build.sh
+   ```
+
+   The Dockerfile pulls in the Alpine operating system, which is very small (less of an attack surface).
+
+   The last line in the response should be:
+   
+   <tt>Successfully tagged justb4/jmeter:5.1</tt>
+
+
+1. Run the test script:
+
+   ```
+   ./test.sh
+   ```
+
+   The last line in the response should be:
+
+   <pre>
+==== HTML Test Report ====
+See HTML test report in tests/trivial/report/index.html
+   </pre>
+
+1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
+   
+   ```
+   cd tests/trivial
+   ```
+   
+   The files are:
+   
+   * jmeter.log
+   * reports folder (see below)
+   * test-plan.jmx containing the JMeter test plan.
+   * test-plan.jtl containing statistics from the run displayed by the index.html file.
+   
+   
+1. Navigate into the <strong>report</strong> folder and click the <strong>index.html</strong> file to pop up a window displaying the run report.
+
 
 ## Image on Docker Hub
 
