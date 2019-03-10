@@ -33,8 +33,8 @@
    The last line in the response should be:
 
    <pre>
-==== HTML Test Report ====
-See HTML test report in tests/trivial/report/index.html
+   ==== HTML Test Report ====
+   See HTML test report in tests/trivial/report/index.html
    </pre>
 
 1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
