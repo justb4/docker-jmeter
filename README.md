@@ -54,6 +54,10 @@
 1. Navigate into the <strong>report</strong> folder and click the <strong>index.html</strong> file to pop up a window displaying the run report.
 
 
+
+
+
+
 ## Image on Docker Hub
 
 Docker image for [Apache JMeter](http://jmeter.apache.org).
