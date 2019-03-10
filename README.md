@@ -2,6 +2,16 @@
 
 # docker-jmeter
 
+## Do it
+
+1. In a Terminal/Command session, install Git, navigate/make a folder, then:
+
+   ```
+   git clone https://github.com/justb4/docker-jmeter.git
+   ```
+
+## Image on Docker Hub
+
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 This Docker image can be run as the ``jmeter`` command. 
 Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
