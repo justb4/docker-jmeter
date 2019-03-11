@@ -11,18 +11,19 @@
    cd docker-jmeter
    ```
 
-1. Run the Build script, which downloads the Docker image from [https://hub.docker.com/r/justb4/jmeter](https://hub.docker.com/r/justb4/jmeter).
+1. Run the Build script to download dependencies, including the docker CLI:
 
    ```
    ./build.sh
    ```
 
-   The Dockerfile pulls in the Alpine operating system, which is very small (less of an attack surface).
+   If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder. 
+   
+   If you view the Dockerfile, notice the JMETER_VERSION specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
 
    The last line in the response should be:
    
    <tt>Successfully tagged justb4/jmeter:5.1</tt>
-
 
 1. Run the test script:
 
