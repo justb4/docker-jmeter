@@ -1,8 +1,52 @@
 [![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
 
 # docker-jmeter
+## Image on Docker Hub
 
-## Do it for reals
+Docker image for [Apache JMeter](http://jmeter.apache.org).
+This Docker image can be run as the ``jmeter`` command. 
+Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+
+## Building
+
+With the script [build.sh](build.sh) the Docker image can be build
+from the [Dockerfile](Dockerfile) but this is not really necessary as
+you may use your own ``docker build`` commandline. Or better: use one
+of the pre-built Images from [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+
+See end of this doc for more detailed build/run/test instructions (thanks to @wilsonmar!)
+
+### Build Options
+
+Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
+
+- **JMETER_VERSION** - JMeter version, default ``5.1``
+- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
+
+NB **IMAGE_TIMEZONE** setting is not working yet.
+
+## Running
+
+The Docker image will accept the same parameters as ``jmeter`` itself, assuming
+you run JMeter non-GUI with ``-n``.
+
+There is a shorthand [run.sh](run.sh) command.
+See [test.sh](test.sh) for an example of how to call [run.sh](run.sh).
+
+## User Defined Variables
+
+This is a standard facility of JMeter: settings in a JMX test script
+may be defined symbolically and substituted at runtime via the commandline.
+These are called JMeter User Defined Variables or UDVs.
+
+See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker 
+image via [run.sh](run.sh).
+
+See also: http://blog.novatec-gmbh.de/how-to-pass-command-line-properties-to-a-jmeter-testplan/
+
+## Do it for real: detailed build/run/test
+
+Contribution by @wilsonmar
 
 1. In a Terminal/Command session, install Git, navigate/make a folder, then:
 
@@ -19,7 +63,7 @@
 
    If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder. 
    
-   If you view the Dockerfile, notice the JMETER_VERSION specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
+   If you view the Dockerfile, notice the `JMETER_VERSION` specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
    
    At the bottom of the Dockerfile is the <strong>entrypoint.sh</strong> file. If you view it, that's where JVM memory settings are specified for <strong>jmeter</strong> before it is invoked. PROTIP: Such settings need to be adjusted for tests of more complexity.
 
@@ -68,47 +112,6 @@
    ![docker-jmeter-report](https://user-images.githubusercontent.com/300046/54093523-1a1c3d80-436f-11e9-8930-750e9b736084.png)
 
 
-
-## Image on Docker Hub
-
-Docker image for [Apache JMeter](http://jmeter.apache.org).
-This Docker image can be run as the ``jmeter`` command. 
-Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
-
-## Building
-
-With the script [build.sh](build.sh) the Docker image can be build
-from the [Dockerfile](Dockerfile) but this is not really necessary as
-you may use your own ``docker build`` commandline.
-
-### Build Options
-
-Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
-
-- **JMETER_VERSION** - JMeter version, default ``5.1``
-- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
-
-NB **IMAGE_TIMEZONE** setting is not working yet.
-
-## Running
-
-The Docker image will accept the same parameters as ``jmeter`` itself, assuming
-you run JMeter non-GUI with ``-n``.
-
-There is a shorthand [run.sh](run.sh) command.
-See [test.sh](test.sh) for an example of how to call [run.sh](run.sh).
-
-## User Defined Variables
-
-This is a standard facility of JMeter: settings in a JMX test script
-may be defined symbolically and substituted at runtime via the commandline.
-These are called JMeter User Defined Variables or UDVs.
-
-See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker 
-image via [run.sh](run.sh).
-
-See also: http://blog.novatec-gmbh.de/how-to-pass-command-line-properties-to-a-jmeter-testplan/
-
 ## Specifics
 
 The Docker image built from the 
@@ -139,4 +142,5 @@ sudo docker run --name ${NAME} -i -v ${WORK_DIR}:${WORK_DIR} -w ${WORK_DIR} ${IM
 
 Thanks to https://github.com/hauptmedia/docker-jmeter
 and https://github.com/hhcordero/docker-jmeter-server for providing
-the Dockerfiles that inspired me. 
+the Dockerfiles that inspired me.   @wilsonmar for contributing detailed instructions. Others
+that tested/reported after version updates.
