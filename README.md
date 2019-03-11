@@ -2,6 +2,75 @@
 
 # docker-jmeter
 
+## Do it for reals
+
+1. In a Terminal/Command session, install Git, navigate/make a folder, then:
+
+   ```
+   git clone https://github.com/justb4/docker-jmeter.git
+   cd docker-jmeter
+   ```
+
+1. Run the Build script to download dependencies, including the docker CLI:
+
+   ```
+   ./build.sh
+   ```
+
+   If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder. 
+   
+   If you view the Dockerfile, notice the JMETER_VERSION specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
+   
+   At the bottom of the Dockerfile is the <strong>entrypoint.sh</strong> file. If you view it, that's where JVM memory settings are specified for <strong>jmeter</strong> before it is invoked. PROTIP: Such settings need to be adjusted for tests of more complexity.
+
+   The last line in the response should be:
+   
+   <tt>Successfully tagged justb4/jmeter:5.1</tt>
+
+1. Run the test script:
+
+   ```
+   ./test.sh
+   ```
+
+   If you view the script, note it invokes the <strong>run.sh</strong> script file stored at the repo's root. View that file to see that it specifies docker image commands.
+   
+   File and folder names specified in the test.sh script is reflected in the last line in the response for its run:
+
+   <pre>
+   ==== HTML Test Report ====
+   See HTML test report in tests/trivial/report/index.html
+   </pre>
+
+1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
+   
+   ```
+   cd tests/trivial
+   ```
+   
+   The files are:
+   
+   * jmeter.log
+   * reports folder (see below)
+   * test-plan.jmx containing the JMeter test plan.
+   * test-plan.jtl containing statistics from the run displayed by the index.html file.
+   
+   
+1. Navigate into the <strong>report</strong> folder and open the <strong>index.html</strong> file to pop up a browser window displaying the run report. On a Mac Terminal:
+   
+   ```
+   cd report
+   open index.html
+   ```
+
+   Here is a sample report:
+
+   ![docker-jmeter-report](https://user-images.githubusercontent.com/300046/54093523-1a1c3d80-436f-11e9-8930-750e9b736084.png)
+
+
+
+## Image on Docker Hub
+
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 This Docker image can be run as the ``jmeter`` command. 
 Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
