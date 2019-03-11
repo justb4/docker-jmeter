@@ -56,9 +56,16 @@
    * test-plan.jtl containing statistics from the run displayed by the index.html file.
    
    
-1. Navigate into the <strong>report</strong> folder and click the <strong>index.html</strong> file to pop up a window displaying the run report. Here is a sample:
+1. Navigate into the <strong>report</strong> folder and open the <strong>index.html</strong> file to pop up a browser window displaying the run report. On a Mac Terminal:
+   
+   ```
+   cd report
+   open index.html
+   ```
 
-![docker-jmeter-report](https://user-images.githubusercontent.com/300046/54093523-1a1c3d80-436f-11e9-8930-750e9b736084.png)
+   Here is a sample report:
+
+   ![docker-jmeter-report](https://user-images.githubusercontent.com/300046/54093523-1a1c3d80-436f-11e9-8930-750e9b736084.png)
 
 
 
