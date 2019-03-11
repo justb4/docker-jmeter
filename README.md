@@ -20,6 +20,8 @@
    If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder. 
    
    If you view the Dockerfile, notice the JMETER_VERSION specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
+   
+   At the bottom of the Dockerfile is the <strong>entrypoint.sh</strong> file. If you view it, that's where JVM memory settings are specified for <strong>jmeter</strong> before it is invoked. PROTIP: Such settings need to be adjusted for tests of more complexity.
 
    The last line in the response should be:
    
@@ -31,7 +33,9 @@
    ./test.sh
    ```
 
-   The last line in the response should be:
+   If you view the script, note it invokes the <strong>run.sh</strong> script file stored at the repo's root. View that file to see that it specifies docker image commands.
+   
+   File and folder names specified in the test.sh script is reflected in the last line in the response for its run:
 
    <pre>
    ==== HTML Test Report ====
