@@ -12,7 +12,7 @@ ENV	JMETER_DOWNLOAD_URL  https://archive.apache.org/dist/jmeter/binaries/apache-
 # Install extra packages
 # See https://github.com/gliderlabs/docker-alpine/issues/136#issuecomment-272703023
 ARG TZ="Europe/Amsterdam"
-ENV TZ ${TZ}
+
 RUN    apk update \
 	&& apk upgrade \
 	&& apk add ca-certificates \
@@ -24,10 +24,9 @@ RUN    apk update \
 	&& curl -L --silent ${JMETER_DOWNLOAD_URL} >  /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz  \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
-	&& rm -rf /tmp/dependencies
-
-RUN cp /usr/share/zoneinfo/${TZ} /etc/localtime
-RUN echo ${TZ} >/etc/timezone
+	&& rm -rf /tmp/dependencies \
+	&& cp /usr/share/zoneinfo/${TZ} /etc/localtime \
+	&& echo ${TZ} >/etc/timezone
 
 # TODO: plugins (later)
 # && unzip -oq "/tmp/dependencies/JMeterPlugins-*.zip" -d $JMETER_HOME
