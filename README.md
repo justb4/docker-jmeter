@@ -20,7 +20,7 @@ See end of this doc for more detailed build/run/test instructions (thanks to @wi
 
 Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
 
-- **JMETER_VERSION** - JMeter version, default ``5.1.1``
+- **JMETER_VERSION** - JMeter version, default ``5.3``
 - **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
 
 NB **IMAGE_TIMEZONE** setting is not working yet.

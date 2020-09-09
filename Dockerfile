@@ -1,10 +1,10 @@
 # inspired by https://github.com/hauptmedia/docker-jmeter  and
 # https://github.com/hhcordero/docker-jmeter-server/blob/master/Dockerfile
-FROM alpine:3.10
+FROM alpine:3.12
 
 MAINTAINER Just van den Broecke<just@justobjects.nl>
 
-ARG JMETER_VERSION="5.1.1"
+ARG JMETER_VERSION="5.3"
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV	JMETER_BIN	${JMETER_HOME}/bin
 ENV	JMETER_DOWNLOAD_URL  https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
