@@ -3,7 +3,7 @@
 # Run JMeter Docker image with options
 
 NAME="jmeter"
-IMAGE="justb4/jmeter:5.1.1"
+IMAGE="justb4/jmeter:5.3"
 
 # Finally run
 sudo docker stop ${NAME} > /dev/null 2>&1

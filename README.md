@@ -69,7 +69,7 @@ Contribution by @wilsonmar
 
    The last line in the response should be:
    
-   <tt>Successfully tagged justb4/jmeter:5.1.1</tt>
+   <tt>Successfully tagged justb4/jmeter:5.3</tt>
 
 1. Run the test script:
 
