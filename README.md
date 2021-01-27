@@ -1,4 +1,5 @@
 [![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
+[![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
 
 # docker-jmeter
 ## Image on Docker Hub
