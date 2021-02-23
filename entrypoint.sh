@@ -4,6 +4,16 @@
 #
 # This script expects the standdard JMeter command parameters.
 #
+
+# Install jmeter plugins available on /plugins volume
+if [ -d /plugins ]
+then
+    for plugin in /plugins/*.jar; do
+        cp $plugin $(pwd)/lib/ext
+    done;
+fi
+
+# Execute JMeter command
 set -e
 freeMem=`awk '/MemFree/ { print int($2/1024) }' /proc/meminfo`
 s=$(($freeMem/10*8))
