@@ -19,12 +19,10 @@ See end of this doc for more detailed build/run/test instructions (thanks to @wi
 
 ### Build Options
 
-Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
+Build arguments (see [build.sh](build.sh)) with default values if not passed to build:
 
-- **JMETER_VERSION** - JMeter version, default ``5.3``
-- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
-
-NB **IMAGE_TIMEZONE** setting is not working yet.
+- **JMETER_VERSION** - JMeter version, default ``5.4``. Use as env variable to build with another version: `export JMETER_VERSION=5.4`
+- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``. Use as env variable to build with another timezone: `export IMAGE_TIMEZONE="Europe/Berlin"`
 
 ## Running
 
