@@ -43,6 +43,15 @@ image via [run.sh](run.sh).
 
 See also: http://blog.novatec-gmbh.de/how-to-pass-command-line-properties-to-a-jmeter-testplan/
 
+## Installing JMeter plugins
+
+To run the container with custom JMeter plugins installed you need to mount a volume /plugins with the .jar files. For example: 
+```sh 
+sudo docker run --name ${NAME} -i -v ${LOCAL_PLUGINS_FOLDER}:/plugins -v ${LOCAL_JMX_WORK_DIR}:${CONTAINER_JMX_WORK_DIR} -w ${PWD} ${IMAGE} $@
+```
+
+The ${LOCAL_PLUGINS_FOLDER} must have only .jar files. Folders and another file extensions will not be considered.
+
 ## Do it for real: detailed build/run/test
 
 Contribution by @wilsonmar
