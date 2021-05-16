@@ -3,3 +3,4 @@ docker-remove-all.sh
 **/report/
 **/*.jtl
 **/*.log
+plugins/*.jar

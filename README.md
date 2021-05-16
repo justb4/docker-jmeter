@@ -17,6 +17,10 @@ of the pre-built Images from [Docker Hub](https://hub.docker.com/r/justb4/jmeter
 
 See end of this doc for more detailed build/run/test instructions (thanks to @wilsonmar!)
 
+### Plugins
+
+For adding plugins to the built image, place all jar files inside a `plugins` dirs in the root of this project.
+
 ### Build Options
 
 Build arguments (see [build.sh](build.sh)) with default values if not passed to build:
