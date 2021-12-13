@@ -35,7 +35,7 @@ jobs:
         run: |
           DOCKER_IMAGE=justb4/jmeter
           VERSION="5.4"
-          TAGS="${DOCKER_IMAGE}:${VERSION} ${DOCKER_IMAGE}:latest"
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
@@ -60,7 +60,9 @@ jobs:
           context: .
           load: true
           push: false
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: |
+            ${{ steps.prep.outputs.tags }}
+            ${{ steps.prep.outputs.image }}:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
