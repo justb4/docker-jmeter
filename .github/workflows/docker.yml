@@ -34,18 +34,8 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=justb4/jmeter
-          VERSION=latest
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/}
-          elif [[ $GITHUB_REF == refs/heads/* ]]; then
-            VERSION=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
-          elif [[ $GITHUB_REF == refs/pull/* ]]; then
-            VERSION=pr-${{ github.event.number }}
-          fi
-          if [[ $VERSION == master ]]; then
-            VERSION=latest
-          fi
-          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          VERSION="5.4"
+          TAGS="${DOCKER_IMAGE}:${VERSION} ${DOCKER_IMAGE}:latest"
           echo ::set-output name=image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tags::${TAGS}
@@ -76,9 +66,9 @@ jobs:
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
             org.opencontainers.image.revision=${{ github.sha }}
 
-#      - name: Tests with Docker Image ⚙️
+#      - name: TODO Tests with Docker Image ⚙️
 #        run: docker run  --entrypoint "/run-tests.sh" ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.version }}
 
       - name: Push to Docker repo (on Push only) ☁️
         if: ${{ github.event_name == 'push' }}
-        run: docker push ${{ steps.prep.outputs.image }}:${{ steps.prep.outputs.version }}
+        run: docker image push --all-tags ${{ steps.prep.outputs.image }}
