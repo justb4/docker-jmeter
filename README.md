@@ -1,4 +1,5 @@
 [![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
+[![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
 
 # docker-jmeter
 ## Image on Docker Hub
@@ -18,12 +19,10 @@ See end of this doc for more detailed build/run/test instructions (thanks to @wi
 
 ### Build Options
 
-Build argumments (see [build.sh](build.sh)) with default values if not passed to build:
+Build arguments (see [build.sh](build.sh)) with default values if not passed to build:
 
-- **JMETER_VERSION** - JMeter version, default ``5.3``
-- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``
-
-NB **IMAGE_TIMEZONE** setting is not working yet.
+- **JMETER_VERSION** - JMeter version, default ``5.4``. Use as env variable to build with another version: `export JMETER_VERSION=5.4`
+- **IMAGE_TIMEZONE** - timezone of Docker image, default ``"Europe/Amsterdam"``. Use as env variable to build with another timezone: `export IMAGE_TIMEZONE="Europe/Berlin"`
 
 ## Running
 
@@ -43,6 +42,15 @@ See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) 
 image via [run.sh](run.sh).
 
 See also: http://blog.novatec-gmbh.de/how-to-pass-command-line-properties-to-a-jmeter-testplan/
+
+## Installing JMeter plugins
+
+To run the container with custom JMeter plugins installed you need to mount a volume /plugins with the .jar files. For example: 
+```sh 
+sudo docker run --name ${NAME} -i -v ${LOCAL_PLUGINS_FOLDER}:/plugins -v ${LOCAL_JMX_WORK_DIR}:${CONTAINER_JMX_WORK_DIR} -w ${PWD} ${IMAGE} $@
+```
+
+The ${LOCAL_PLUGINS_FOLDER} must have only .jar files. Folders and another file extensions will not be considered.
 
 ## Do it for real: detailed build/run/test
 
