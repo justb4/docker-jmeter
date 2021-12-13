@@ -1,4 +1,4 @@
-[![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
+[![Docker Build](https://github.com/justb4/jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/jmeter/actions/workflows/docker.yml)
 [![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
 
 # docker-jmeter
@@ -7,6 +7,8 @@
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 This Docker image can be run as the ``jmeter`` command. 
 Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+Starting version 5.4 Docker builds/pushes 
+are [executed via GitHub Workflows](.github/workflows/docker.yml).
 
 ## Building
 
