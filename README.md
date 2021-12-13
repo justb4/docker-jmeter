@@ -1,4 +1,4 @@
-[![Docker Build](https://github.com/justb4/jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/jmeter/actions/workflows/docker.yml)
+[![Docker Build](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml)
 [![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
 
 # docker-jmeter
