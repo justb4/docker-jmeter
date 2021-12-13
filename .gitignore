@@ -1,3 +1,5 @@
 docker-remove-all.sh
 .DS_Store
 **/report/
+**/*.jtl
+**/*.log

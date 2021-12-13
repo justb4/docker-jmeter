@@ -86,6 +86,18 @@ Contribution by @wilsonmar
    See HTML test report in tests/trivial/report/index.html
    </pre>
 
+   *Alternative exec by Makefile:*
+
+   Like the bash script, it is possible to run the tests through a **Makefile** simply with the `make` command or by sending parameters as follows:
+
+   ```sh
+   TARGET_HOST="www.map5.nl" \
+   TARGET_PORT="80" \
+   THREADS=10 \
+   TEST=trivial \
+   make
+   ```   
+
 1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
    
    ```
