@@ -3,7 +3,7 @@
 # Run JMeter Docker image with options
 
 NAME="jmeter"
-JMETER_VERSION=${JMETER_VERSION:-"5.4"}
+JMETER_VERSION=${JMETER_VERSION:-"latest"}
 IMAGE="justb4/jmeter:${JMETER_VERSION}"
 
 # Finally run
