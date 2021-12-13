@@ -10,6 +10,25 @@ Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter)
 Starting version 5.4 Docker builds/pushes 
 are [executed via GitHub Workflows](.github/workflows/docker.yml).
 
+## Donate
+With **over 10 Million Pulls from DockerHub**, this Docker Image is increasingly popular.
+To support its active maintainance consider making a donation, for example via PayPal:
+
+[![Donate with PayPal](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://www.paypal.com/biz/fund?id=3QZW9SNGCWBM4)
+
+
+## Security Patches
+As you may have seen in the news, a new zero-day exploit has been reported against the 
+popular Log4J2 library which can allow an attacker to remotely execute code. 
+The vulnerability has been reported with [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) 
+against the log4j-core jar and has been fixed in Log4J v2.15.0.
+
+JMeter, at least in versions 5 and later uses the vulnerable Log4J versions.
+The good news though is that the vulnerability applies only to remotely accessible Java web-services.
+JMeter is a commandline/GUI tool one runs internally. Still it is good practice to 
+patch this problem. Starting with `justb4/jmeter:5.4` and the `latest` Docker Images as from dec 13, 2021
+this CVE has been fixed via issue #47 by [disabling the JNDI lookup feature](https://github.com/justb4/docker-jmeter/commit/0b2cd2885a0d6007440e12a58af9f49bbebe17a6).
+
 ## Building
 
 With the script [build.sh](build.sh) the Docker image can be build
