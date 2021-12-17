@@ -21,13 +21,18 @@ To support its active maintainance consider making a donation, for example via P
 As you may have seen in the news, a new zero-day exploit has been reported against the 
 popular Log4J2 library which can allow an attacker to remotely execute code. 
 The vulnerability has been reported with [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) 
-against the log4j-core jar and has been fixed in Log4J v2.15.0.
+against the log4j-core jar and has been fixed in Log4J v2.16.0.
 
 JMeter, at least in versions 5 and later uses the vulnerable Log4J versions.
 The good news though is that the vulnerability applies only to remotely accessible Java web-services.
 JMeter is a commandline/GUI tool one runs internally. Still it is good practice to 
-patch this problem. Starting with `justb4/jmeter:5.4` and the `latest` Docker Images as from dec 13, 2021
-this CVE has been fixed via issue #47 by [disabling the JNDI lookup feature](https://github.com/justb4/docker-jmeter/commit/0b2cd2885a0d6007440e12a58af9f49bbebe17a6).
+patch this problem. 
+
+**JMeter has been updated to 5.4.2 for security CVE-2021-45046 & CVE-2021-45046**.
+
+https://jmeter.apache.org/changes.html#Non-functional%20changes
+
+The update to 5.4.2 includes the updated Apache log4j2 to 2.16.0 (from 2.13.3), thanks for PR #51!
 
 ## Building
 
