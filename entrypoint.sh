@@ -9,7 +9,7 @@
 if [ -d /plugins ]
 then
     for plugin in /plugins/*.jar; do
-        cp $plugin $(pwd)/lib/ext
+        cp $plugin $(JMETER_HOME)/lib/ext
     done;
 fi
 
