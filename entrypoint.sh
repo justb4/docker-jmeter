@@ -23,8 +23,8 @@ do
 	case "$1" in
 	  -max_memory)
 	      shift
-          freeMem = "$1"
-          shift
+              freeMem = "$1"
+              shift
 	      ;;
 	  --)
 	      eoo=1
