@@ -13,9 +13,43 @@ then
     done;
 fi
 
+# extract JVM memory parameter
+options=()  # the buffer array for the parameters
+eoo=0       # end of options reached
+
+while [[ $1 ]]
+do
+    if ! ((eoo)); then
+	case "$1" in
+	  -max_memory)
+	      shift
+          freeMem = "$1"
+          shift
+	      ;;
+	  --)
+	      eoo=1
+	      options+=("$1")
+	      shift
+	      ;;
+	  *)
+	      options+=("$1")
+	      shift
+	      ;;
+	esac
+    else
+	options+=("$1")
+
+	# Another (worse) way of doing the same thing:
+	# options=("${options[@]}" "$1")
+	shift
+    fi
+done
+
 # Execute JMeter command
 set -e
+if (freeMem == {}); then 
 freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
+fi
 s=$(($freeMem/10*8))
 x=$(($freeMem/10*8))
 n=$(($freeMem/10*2))
@@ -23,12 +57,12 @@ export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
 
 echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"
-echo "jmeter args=$@"
+echo "jmeter args=${options[@]}"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
 EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
-echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
-jmeter ${EXTRA_ARGS} $@
+echo "jmeter ALL ARGS=${EXTRA_ARGS} ${options[@]}"
+jmeter ${EXTRA_ARGS} "${options[@]}"
 
 echo "END Running Jmeter on `date`"
 
