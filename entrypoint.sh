@@ -22,9 +22,8 @@ do
     if ! ((eoo)); then
 	case "$1" in
 	  -max_memory)
-	      shift
-              freeMem = "$1"
-              shift
+          freeMem="$2"
+          shift 2
 	      ;;
 	  --)
 	      eoo=1
@@ -44,11 +43,10 @@ do
 	shift
     fi
 done
-
 # Execute JMeter command
 set -e
-if (freeMem == {}); then 
-freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
+if [ -z $freeMem ]; then 
+freeMem="999999999"
 fi
 s=$(($freeMem/10*8))
 x=$(($freeMem/10*8))
@@ -58,18 +56,3 @@ export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
 echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"
 echo "jmeter args=${options[@]}"
-
-# Keep entrypoint simple: we must pass the standard JMeter arguments
-EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
-echo "jmeter ALL ARGS=${EXTRA_ARGS} ${options[@]}"
-jmeter ${EXTRA_ARGS} "${options[@]}"
-
-echo "END Running Jmeter on `date`"
-
-#     -n \
-#    -t "/tests/${TEST_DIR}/${TEST_PLAN}.jmx" \
-#    -l "/tests/${TEST_DIR}/${TEST_PLAN}.jtl"
-# exec tail -f jmeter.log
-#    -D "java.rmi.server.hostname=${IP}" \
-#    -D "client.rmi.localport=${RMI_PORT}" \
-#  -R $REMOTE_HOSTS
