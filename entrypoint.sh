@@ -43,10 +43,11 @@ do
 	shift
     fi
 done
+
 # Execute JMeter command
 set -e
 if [ -z $freeMem ]; then 
-freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
+    freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
 fi
 s=$(($freeMem/10*8))
 x=$(($freeMem/10*8))
