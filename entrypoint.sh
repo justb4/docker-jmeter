@@ -17,25 +17,11 @@ fi
 set -e
 freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
 
-if [-z $JVM_XMN]; then
-    n=$JVM_XMN
-else 
-    n=$(($freeMem/10*2))
-fi
+[[ -z ${JVM_XMN} ]] && JVM_XMN=$(($freeMem/10*2))
+[[ -z ${JVM_XMS} ]] && JVM_XMS=$(($freeMem/10*8))
+[[ -z ${JVM_XMX} ]] && JVM_XMX=$(($freeMem/10*8))
 
-if [-z $JVM_XMS]; then
-    s=$JVM_XMS
-else
-    s=$(($freeMem/10*8))
-fi
-
-if [-z $JVM_XMX]; then
-    x=$JVM_XMX
-else
-    x=$(($freeMem/10*8))
-fi
-
-export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
+export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m"
 
 echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"
