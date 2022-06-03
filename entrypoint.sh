@@ -6,9 +6,9 @@
 #
 
 # Install jmeter plugins available on /plugins volume
-if [ -d /plugins ]
+if [ -d $JMETER_CUSTOM_PLUGINS_FOLDER ]
 then
-    for plugin in /plugins/*.jar; do
+    for plugin in ${JMETER_CUSTOM_PLUGINS_FOLDER}/*.jar; do
         cp $plugin ${JMETER_HOME}/lib/ext
     done;
 fi

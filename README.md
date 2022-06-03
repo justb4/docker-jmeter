@@ -90,6 +90,15 @@ sudo docker run --name ${NAME} -i -v ${LOCAL_PLUGINS_FOLDER}:/plugins -v ${LOCAL
 
 The ${LOCAL_PLUGINS_FOLDER} must have only .jar files. Folders and another file extensions will not be considered.
 
+### Configuring the custom JMeter plugins folder location
+
+It is also possible to define an alternate location to the custom JMeter plugins folder. Simply define a environment variable called `JMETER_CUSTOM_PLUGINS_FOLDER` with the desired folder path like in the example bellow:
+
+```sh
+sudo docker run --name ${NAME} -i -e JMETER_CUSTOM_PLUGINS_FOLDER=/jmeter/plugins -v ${LOCAL_PLUGINS_FOLDER}:/jmeter/plugins -v ${LOCAL_JMX_WORK_DIR}:${CONTAINER_JMX_WORK_DIR} -w ${PWD} ${IMAGE} $@
+```
+
+
 ## Do it for real: detailed build/run/test
 
 Contribution by @wilsonmar
