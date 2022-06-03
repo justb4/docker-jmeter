@@ -67,7 +67,19 @@ These are called JMeter User Defined Variables or UDVs.
 See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker 
 image via [run.sh](run.sh).
 
-See also: https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/
+See also: https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/ption
+
+## Adjust Java Memory Options
+
+By default, JMeter reads out the available memory from the host machine and uses a fixed value of 80% of it as a maximum. If this causes Issues, there is the option to use environment variables to adjust the JVM memory Parameters:
+
+```JVM_XMN``` to adjust maximum nursery size
+
+```JVM_XMS``` to adjust initial heap size
+
+```JVM_XMX``` to adjust maximum heap size
+
+All three use values in Megabyte range.
 
 ## Installing JMeter plugins
 
