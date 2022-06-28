@@ -67,7 +67,7 @@ These are called JMeter User Defined Variables or UDVs.
 See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker 
 image via [run.sh](run.sh).
 
-See also: https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/ption
+See also: https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/
 
 ## Adjust Java Memory Options
 
