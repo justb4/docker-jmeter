@@ -1,0 +1,4 @@
+[default]
+output = json
+region = eu-west-2
+

@@ -21,14 +21,14 @@ freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
 [[ -z ${JVM_XMS} ]] && JVM_XMS=$(($freeMem/10*8))
 [[ -z ${JVM_XMX} ]] && JVM_XMX=$(($freeMem/10*8))
 
-export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m"
+export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m -Denv_var=AWS_ACCESS_KEY_ID -Denv_var=AWS_SECRET_ACCESS_KEY -Denv_var=AWS_SESSION_TOKEN"
 
 echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"
 echo "jmeter args=$@"
 
 # Keep entrypoint simple: we must pass the standard JMeter arguments
-EXTRA_ARGS=-Dlog4j2.formatMsgNoLookups=true
+EXTRA_ARGS="-Dawt.useSystemAAFontSettings=lcd -Dlog4j2.formatMsgNoLookups=true -JAWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -JAWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -JAWS_SESSION_TOKEN=$AWS_SESSION_TOKEN"
 echo "jmeter ALL ARGS=${EXTRA_ARGS} $@"
 jmeter ${EXTRA_ARGS} $@
 

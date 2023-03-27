@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.1" jmeter="3.1 r1770033">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="TrivialTest" enabled="true">
-      <stringProp name="TestPlan.comments"></stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="AWS Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments">JMeter Test Plan to execute test over aws services.</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
@@ -11,132 +12,105 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Scenario 1" enabled="true">
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="filename">input_data.csv</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="quotedData">true</boolProp>
+        <boolProp name="recycle">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">true</boolProp>
+        <stringProp name="variableNames">id,time,delivery_datetime,test_delivery,test_sample</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="AWS_ACCESS_KEY_ID" elementType="Argument">
+            <stringProp name="Argument.name">AWS_ACCESS_KEY_ID</stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;AWS_ACCESS_KEY_ID&quot;) )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AWS_SECRET_ACCESS_KEY" elementType="Argument">
+            <stringProp name="Argument.name">AWS_SECRET_ACCESS_KEY</stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;AWS_SECRET_ACCESS_KEY&quot;) )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AWS_SESSION_TOKEN" elementType="Argument">
+            <stringProp name="Argument.name">AWS_SESSION_TOKEN</stringProp>
+            <stringProp name="Argument.value">${__BeanShell( System.getenv(&quot;AWS_SESSION_TOKEN&quot;) )}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SQS Standard Queue Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">10</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">2</stringProp>
-        <longProp name="ThreadGroup.start_time">1373789594000</longProp>
-        <longProp name="ThreadGroup.end_time">1373789594000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">60</stringProp>
-        <stringProp name="ThreadGroup.delay">5</stringProp>
-        <stringProp name="TestPlan.comments">Virtual Users Running Scenario 1.
-Make test last 1 minute (see Scheduler)</stringProp>
-      </ThreadGroup>
-      <!-- <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${THREADS}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration">0</stringProp>
-        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </ThreadGroup> -->
+        <stringProp name="TestPlan.comments">Thread group to execute load testing over aws sqs standard queue.</stringProp>
+      </ThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${TARGET_HOST}</stringProp>
-          <stringProp name="HTTPSampler.port">${TARGET_PORT}</stringProp>
-          <stringProp name="HTTPSampler.connect_timeout">5000</stringProp>
-          <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${TARGET_PATH}</stringProp>
-          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
-          <stringProp name="TestPlan.comments">Notice Timeouts:
-Read to 30s
-Connect to 5s</stringProp>
-          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
-        </ConfigTestElement>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTML Page Test" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="Variables pré-définies" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/</stringProp>
-          <stringProp name="HTTPSampler.method">GET</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <boolProp name="HTTPSampler.monitor">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Test-Keyword" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="-1283727093">${TARGET_KEYWORD}</stringProp>
+        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="SQS Standard Queue Producer" enabled="true">
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="aws_access_key_id" elementType="Argument">
+                <stringProp name="Argument.name">aws_access_key_id</stringProp>
+                <stringProp name="Argument.value">${AWS_ACCESS_KEY_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="aws_secret_access_key" elementType="Argument">
+                <stringProp name="Argument.name">aws_secret_access_key</stringProp>
+                <stringProp name="Argument.value">${AWS_SECRET_ACCESS_KEY}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="aws_session_token" elementType="Argument">
+                <stringProp name="Argument.name">aws_session_token</stringProp>
+                <stringProp name="Argument.value">${AWS_SESSION_TOKEN}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="aws_region" elementType="Argument">
+                <stringProp name="Argument.name">aws_region</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="aws_configure_profile" elementType="Argument">
+                <stringProp name="Argument.name">aws_configure_profile</stringProp>
+                <stringProp name="Argument.value">default</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="sqs_queue_name" elementType="Argument">
+                <stringProp name="Argument.name">sqs_queue_name</stringProp>
+                <stringProp name="Argument.value">genie-dev-integration-main-workflow-queue</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="sqs_msg_body" elementType="Argument">
+                <stringProp name="Argument.name">sqs_msg_body</stringProp>
+                <stringProp name="Argument.value">{     &quot;version&quot;: &quot;0&quot;,     &quot;id&quot;: &quot;${id}&quot;,     &quot;detail-type&quot;: &quot;SampleDeliveredEvent&quot;,     &quot;source&quot;: &quot;SampleDeliveredEventProducer&quot;,     &quot;account&quot;: &quot;898810008799&quot;,     &quot;time&quot;: &quot;${time}&quot;,     &quot;region&quot;: &quot;eu-west-2&quot;,     &quot;resources&quot;: [         &quot;arn:aws:lambda:eu-west-2:898810008799:function:genie-dev-integration-fc2cae24-sample-delivered-event-producer&quot;     ],     &quot;detail&quot;: {         &quot;delivery_datetime&quot;: &quot;${delivery_datetime}&quot;,         &quot;delivery_id&quot;: &quot;${test_delivery}&quot;,         &quot;sample_id&quot;: &quot;${test_sample}&quot;,         &quot;sender&quot;: &quot;INTEGRATION_TEST&quot;,         &quot;_datadog&quot;: {             &quot;x-datadog-trace-id&quot;: &quot;13869812150778444519&quot;,             &quot;x-datadog-parent-id&quot;: &quot;10019837180186309268&quot;,             &quot;x-datadog-sampling-priority&quot;: &quot;1&quot;,             &quot;x-datadog-tags&quot;: &quot;_dd.p.dm=-0&quot;,             &quot;traceparent&quot;: &quot;00-0000000000000000c07b78aa6c8bbae7-8b0d9cd3f841b294-01&quot;,             &quot;tracestate&quot;: &quot;dd=s:1;t.dm:-0&quot;         }     } }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="sqs_msg_attributes" elementType="Argument">
+                <stringProp name="Argument.name">sqs_msg_attributes</stringProp>
+                <stringProp name="Argument.value">[     {         &quot;name&quot;: &quot;attribute-1&quot;,         &quot;type&quot;: &quot;String&quot;,         &quot;value&quot;: &quot;aws&quot;     },     {         &quot;name&quot;: &quot;attribute-2&quot;,         &quot;type&quot;: &quot;String&quot;,         &quot;value&quot;: &quot;meter&quot;     },     {         &quot;name&quot;: &quot;attribute-3&quot;,         &quot;type&quot;: &quot;String.custom&quot;,         &quot;value&quot;: &quot;sqs&quot;     },     {         &quot;name&quot;: &quot;attribute-4&quot;,         &quot;type&quot;: &quot;Number&quot;,         &quot;value&quot;: &quot;123&quot;     },     {         &quot;name&quot;: &quot;attribute-5&quot;,         &quot;type&quot;: &quot;Number&quot;,         &quot;value&quot;: &quot;456&quot;     },         {         &quot;name&quot;: &quot;attribute-6&quot;,         &quot;type&quot;: &quot;Number.int&quot;,         &quot;value&quot;: &quot;789&quot;     },     {         &quot;name&quot;: &quot;attribute-7&quot;,         &quot;type&quot;: &quot;Binary&quot;,         &quot;value&quot;: &quot;01100001 01110111 01110011&quot;     },     {         &quot;name&quot;: &quot;attribute-8&quot;,         &quot;type&quot;: &quot;Binary&quot;,         &quot;value&quot;: &quot;01101101 01100101 01110100 01100101 01110010&quot;     },     {         &quot;name&quot;: &quot;attribute-9&quot;,         &quot;type&quot;: &quot;Binary.img&quot;,         &quot;value&quot;: &quot;01101101 01100101 01110100 01100101 01110010&quot;     } ]</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="sqs_delay_seconds" elementType="Argument">
+                <stringProp name="Argument.name">sqs_delay_seconds</stringProp>
+                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
             </collectionProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
-            <stringProp name="TestPlan.comments">Test if HTML page contains keyword string</stringProp>
-          </ResponseAssertion>
-          <hashTree/>
-        </hashTree>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="ThinkTime1s" enabled="true">
-          <intProp name="ActionProcessor.action">1</intProp>
-          <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">0</stringProp>
-        </TestAction>
-        <hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="URT" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
-            <stringProp name="RandomTimer.range">100.0</stringProp>
-          </UniformRandomTimer>
-          <hashTree/>
-        </hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-          <collectionProp name="Arguments.arguments">
-            <elementProp name="TARGET_HOST" elementType="Argument">
-              <stringProp name="Argument.name">TARGET_HOST</stringProp>
-              <stringProp name="Argument.value">${__P(TARGET_HOST,www.kadaster.nl)}</stringProp>
-              <stringProp name="Argument.desc">target server domain/IP for testing</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="TARGET_PORT" elementType="Argument">
-              <stringProp name="Argument.name">TARGET_PORT</stringProp>
-              <stringProp name="Argument.value">${__P(TARGET_PORT,80)}</stringProp>
-              <stringProp name="Argument.desc">target port on TARGET_HOST for testing</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="TARGET_PATH" elementType="Argument">
-              <stringProp name="Argument.name">TARGET_PATH</stringProp>
-              <stringProp name="Argument.value">${__P(TARGET_PATH,/zakelijk)}</stringProp>
-              <stringProp name="Argument.desc">target path on target server</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="TARGET_KEYWORD" elementType="Argument">
-              <stringProp name="Argument.name">TARGET_KEYWORD</stringProp>
-              <stringProp name="Argument.value">${__P(TARGET_KEYWORD,Zakelijk)}</stringProp>
-              <stringProp name="Argument.desc">keyword string present  in repsonse</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="THREADS" elementType="Argument">
-              <stringProp name="Argument.name">THREADS</stringProp>
-              <stringProp name="Argument.value">${__P(THREADS,1)}</stringProp>
-              <stringProp name="Argument.desc">Number of concurrent threads</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-          </collectionProp>
-          <stringProp name="TestPlan.comments">Example using UDV for symbolic names test target and response to test</stringProp>
-        </Arguments>
+          </elementProp>
+          <stringProp name="classname">org.apache.jmeter.protocol.aws.sqs.SQSProducerStandardQueue</stringProp>
+        </JavaSampler>
         <hashTree/>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -152,7 +126,7 @@ Connect to 5s</stringProp>
             <code>true</code>
             <message>true</message>
             <threadName>true</threadName>
-            <dataType>false</dataType>
+            <dataType>true</dataType>
             <encoding>false</encoding>
             <assertions>true</assertions>
             <subresults>true</subresults>
@@ -166,12 +140,87 @@ Connect to 5s</stringProp>
             <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
             <assertionsResultsToSave>0</assertionsResultsToSave>
             <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
             <threadCounts>true</threadCounts>
             <idleTime>true</idleTime>
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="TestPlan.comments">For scripting only</stringProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
