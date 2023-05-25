@@ -33,7 +33,7 @@ jobs:
       - name: Prepare 📦
         id: prep
         run: |
-          DOCKER_IMAGE=justb4/jmeter
+          DOCKER_IMAGE=ssingh2005/jmeter
           VERSION="5.5"
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=image::${DOCKER_IMAGE}
