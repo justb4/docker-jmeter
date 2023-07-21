@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JMETER_VERSION=${JMETER_VERSION:-"5.5"}
+JMETER_VERSION=${JMETER_VERSION:-"5.6.2"}
 IMAGE_TIMEZONE=${IMAGE_TIMEZONE:-"Europe/Amsterdam"}
 
 # Example build line
