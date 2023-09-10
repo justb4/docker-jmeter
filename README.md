@@ -1,12 +1,12 @@
-[![Docker Build](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml)
-[![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
+[![Docker Build](https://github.com/doorcounts/docker-jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/doorcounts/docker-jmeter/actions/workflows/docker.yml)
+[![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/doorcounts)
 
 # docker-jmeter
 ## Image on Docker Hub
 
 Docker image for [Apache JMeter](http://jmeter.apache.org).
 This Docker image can be run as the ``jmeter`` command.
-Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+Find Images of this repo on [Docker Hub](https://hub.docker.com/r/doorcounts/jmeter).
 Starting version 5.4 Docker builds/pushes
 are [executed via GitHub Workflows](.github/workflows/docker.yml).
 
@@ -39,7 +39,7 @@ The update to 5.4.2 includes the updated Apache log4j2 to 2.16.0 (from 2.13.3), 
 With the script [build.sh](build.sh) the Docker image can be build
 from the [Dockerfile](Dockerfile) but this is not really necessary as
 you may use your own ``docker build`` commandline. Or better: use one
-of the pre-built Images from [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
+of the pre-built Images from [Docker Hub](https://hub.docker.com/r/doorcounts/jmeter).
 
 See end of this doc for more detailed build/run/test instructions (thanks to @wilsonmar!)
 
@@ -106,7 +106,7 @@ Contribution by @wilsonmar
 1. In a Terminal/Command session, install Git, navigate/make a folder, then:
 
    ```
-   git clone https://github.com/justb4/docker-jmeter.git
+   git clone https://github.com/doorcounts/docker-jmeter.git
    cd docker-jmeter
    ```
 
@@ -124,7 +124,8 @@ Contribution by @wilsonmar
 
    The last line in the response should be:
 
-   <tt>Successfully tagged justb4/jmeter:5.5</tt>
+   <tt>Successfully tagged doorcounts/jmeter:5.6.2</tt>
+
 
 1. Run the test script:
 
