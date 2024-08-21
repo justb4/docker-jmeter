@@ -237,14 +237,14 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-        <stringProp name="ThreadGroup.num_threads">${statistica_code_thread}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${statistica_code_rumpup}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(statistica_code_thread)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(statistica_code_rumpup)}</stringProp>
         <longProp name="ThreadGroup.duration">100</longProp>
         <longProp name="ThreadGroup.delay">1</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${statistica_code_loop}</stringProp>
+          <stringProp name="LoopController.loops">${__P(statistica_code_loop)}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
