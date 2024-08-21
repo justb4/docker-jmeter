@@ -11,6 +11,8 @@
           </elementProp>
         </collectionProp>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Local - User Defined Variables" enabled="false">
@@ -79,7 +81,7 @@
         <elementProp name="ThreadGroup.main_controller" elementType="OpenModelThreadGroupController"/>
       </OpenModelThreadGroup>
       <hashTree/>
-      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Content-Type</stringProp>
@@ -92,7 +94,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">false</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
@@ -104,7 +106,7 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <stringProp name="HTTPSampler.domain">krakend.qa-profibonus.dclouds.ru</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -140,7 +142,7 @@
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${local_path}</stringProp>
@@ -152,20 +154,9 @@
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="false">
-          <stringProp name="filename">/Users/Shared/git/docker-jmeter/tests/trivial/frontUserPassList.csv</stringProp>
-          <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="variableNames">phone_num,password</stringProp>
-          <boolProp name="randomOrder">true</boolProp>
-          <boolProp name="ignoreFirstLine">true</boolProp>
-          <boolProp name="rewindOnTheEndOfList">true</boolProp>
-          <boolProp name="independentListPerThread">true</boolProp>
-        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
-        <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Auth"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Auth" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization" enabled="true">
             <stringProp name="HTTPSampler.path">/api/v1/public/auth/login</stringProp>
             <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -185,7 +176,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="fingerprint" elementType="Header">
                   <stringProp name="Header.name">fingerprint</stringProp>
@@ -194,7 +185,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">true</stringProp>
               <stringProp name="RegexExtractor.refname">access_token</stringProp>
               <stringProp name="RegexExtractor.regex">Token: (.*)</stringProp>
@@ -204,7 +195,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion">
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
               <stringProp name="BeanShellAssertion.query">${__setProperty(access_token,${access_token})};
 ${__setProperty(phone_num,${phone_num})};</stringProp>
               <stringProp name="BeanShellAssertion.filename"></stringProp>
@@ -212,7 +203,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
             </BeanShellAssertion>
             <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer">
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">100</stringProp>
               <stringProp name="RandomTimer.range">10.0</stringProp>
             </GaussianRandomTimer>
@@ -235,7 +226,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica" enabled="true">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${__P(statistica_code_thread)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(statistica_code_rumpup)}</stringProp>
@@ -249,7 +240,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
@@ -273,18 +264,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="false">
-          <stringProp name="filename">/Users/Shared/git/docker-jmeter/tests/trivial/frontUserPassList.csv</stringProp>
-          <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="variableNames">phone_num,password</stringProp>
-          <boolProp name="randomOrder">true</boolProp>
-          <boolProp name="ignoreFirstLine">true</boolProp>
-          <boolProp name="rewindOnTheEndOfList">true</boolProp>
-          <boolProp name="independentListPerThread">true</boolProp>
-        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
-        <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -295,7 +275,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization" enabled="true">
             <stringProp name="HTTPSampler.path">/api/v1/public/auth/login</stringProp>
             <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -315,7 +295,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="fingerprint" elementType="Header">
                   <stringProp name="Header.name">fingerprint</stringProp>
@@ -324,7 +304,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">true</stringProp>
               <stringProp name="RegexExtractor.refname">access_token</stringProp>
               <stringProp name="RegexExtractor.regex">Token: (.*)</stringProp>
@@ -334,7 +314,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion">
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
               <stringProp name="BeanShellAssertion.query">${__setProperty(access_token,${access_token})};
 ${__setProperty(phone_num,${phone_num})};</stringProp>
               <stringProp name="BeanShellAssertion.filename"></stringProp>
@@ -349,9 +329,9 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Statistics">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Statistics" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/balance/statistics</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -362,7 +342,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -375,7 +355,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer">
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">100</stringProp>
               <stringProp name="RandomTimer.range">50.0</stringProp>
             </GaussianRandomTimer>
@@ -482,7 +462,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Activation code">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Activation code" enabled="true">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${activation_code_thread}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${activation_code_rumpup}</stringProp>
@@ -496,7 +476,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -519,7 +499,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="variableNames">phone_num,password</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">${local_path}</stringProp>
@@ -530,17 +510,6 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <boolProp name="stopThread">true</boolProp>
             <stringProp name="variableNames">phone_num,password</stringProp>
           </CSVDataSet>
-          <hashTree/>
-          <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="false">
-            <stringProp name="filename">/Users/Shared/git/docker-jmeter/tests/trivial/frontUserPassList.csv</stringProp>
-            <stringProp name="fileEncoding">UTF-8</stringProp>
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="variableNames">phone_num,password</stringProp>
-            <boolProp name="randomOrder">true</boolProp>
-            <boolProp name="ignoreFirstLine">true</boolProp>
-            <boolProp name="rewindOnTheEndOfList">true</boolProp>
-            <boolProp name="independentListPerThread">true</boolProp>
-          </com.blazemeter.jmeter.RandomCSVDataSetConfig>
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Auth" enabled="true"/>
           <hashTree>
@@ -599,7 +568,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/big_codes.csv</stringProp>
@@ -611,18 +580,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">code_num</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="false">
-          <stringProp name="filename">${path_data}/big_codes.csv</stringProp>
-          <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="variableNames">code_num</stringProp>
-          <boolProp name="randomOrder">true</boolProp>
-          <boolProp name="ignoreFirstLine">true</boolProp>
-          <boolProp name="rewindOnTheEndOfList">true</boolProp>
-          <boolProp name="independentListPerThread">true</boolProp>
-        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
-        <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 2">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 2" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -633,7 +591,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Activation">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Activation" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/products/codes/activate</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -674,7 +632,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Score output">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Score output" enabled="true">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${score_out_threads}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${score_out_rumpup}</stringProp>
@@ -688,7 +646,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config -- LOCAL" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
@@ -700,18 +658,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="false">
-          <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
-          <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="delimiter">,</stringProp>
-          <stringProp name="variableNames">phone_num,password</stringProp>
-          <boolProp name="randomOrder">true</boolProp>
-          <boolProp name="ignoreFirstLine">true</boolProp>
-          <boolProp name="rewindOnTheEndOfList">true</boolProp>
-          <boolProp name="independentListPerThread">true</boolProp>
-        </com.blazemeter.jmeter.RandomCSVDataSetConfig>
-        <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -788,7 +735,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">code_num</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 3">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 3" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -799,7 +746,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Create">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Create" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/paymentsystems/virtual-card/create</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -883,7 +830,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="ActionProcessor.duration">10000</stringProp>
         </TestAction>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 4">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 4" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -894,7 +841,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Confirm">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Confirm" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/paymentsystems/virtual-card/confirm</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
