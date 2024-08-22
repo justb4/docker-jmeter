@@ -226,7 +226,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${__P(statistica_code_thread)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(statistica_code_rumpup)}</stringProp>
@@ -462,16 +462,16 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Activation code" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Activation code">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-        <stringProp name="ThreadGroup.num_threads">${activation_code_thread}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${activation_code_rumpup}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(activation_code_thread)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(activation_code_rumpup)}</stringProp>
         <longProp name="ThreadGroup.duration">15</longProp>
         <longProp name="ThreadGroup.delay">1</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${activation_code_loop}</stringProp>
+          <stringProp name="LoopController.loops">${__P(activation_code_loop)}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -568,7 +568,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/big_codes.csv</stringProp>
@@ -632,16 +632,16 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Score output" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Score output">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-        <stringProp name="ThreadGroup.num_threads">${score_out_threads}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${score_out_rumpup}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(score_out_threads)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${_P(score_out_rumpup)}</stringProp>
         <longProp name="ThreadGroup.duration">12</longProp>
         <longProp name="ThreadGroup.delay">2</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${score_out_loop}</stringProp>
+          <stringProp name="LoopController.loops">${__P(score_out_loop)}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
@@ -658,7 +658,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Auth">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -669,7 +669,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization">
             <stringProp name="HTTPSampler.path">/api/v1/public/auth/login</stringProp>
             <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
