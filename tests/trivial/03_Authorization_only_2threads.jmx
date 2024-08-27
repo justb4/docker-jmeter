@@ -120,7 +120,7 @@
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <intProp name="ThreadGroup.num_threads">2</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">180</longProp>
+        <longProp name="ThreadGroup.duration">300</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -226,7 +226,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${__P(statistica_code_thread)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(statistica_code_rumpup)}</stringProp>
@@ -240,7 +240,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
@@ -330,7 +330,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Statistics">
             <stringProp name="HTTPSampler.path">api/v1/private/balance/statistics</stringProp>
@@ -364,9 +364,9 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 12" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 12"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Codes" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Codes">
             <stringProp name="HTTPSampler.path">api/v1/private/balance/statistics/codes</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -378,7 +378,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -412,7 +412,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
