@@ -515,7 +515,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
             <value>100.0</value>
-            <savedValue>100.0</savedValue>
+            <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
@@ -758,7 +758,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
             <value>100.0</value>
-            <savedValue>100.0</savedValue>
+            <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
@@ -885,7 +885,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 13"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 13" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Promotions" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/products/statistics/promotions</stringProp>
@@ -1001,7 +1001,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <FloatProperty>
             <name>ThroughputController.percentThroughput</name>
             <value>100.0</value>
-            <savedValue>100.0</savedValue>
+            <savedValue>0.0</savedValue>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
@@ -1142,7 +1142,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -1162,7 +1162,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 13"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 13" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Tasks" enabled="true">
             <stringProp name="HTTPSampler.path">api/v1/private/content/statistics/tasks</stringProp>
@@ -1176,7 +1176,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
