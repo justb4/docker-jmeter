@@ -130,7 +130,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
@@ -185,7 +185,7 @@
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor">
               <stringProp name="RegexExtractor.useHeaders">true</stringProp>
               <stringProp name="RegexExtractor.refname">access_token</stringProp>
               <stringProp name="RegexExtractor.regex">Token: (.*)</stringProp>
@@ -195,7 +195,7 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion">
               <stringProp name="BeanShellAssertion.query">${__setProperty(access_token,${access_token})};
 ${__setProperty(phone_num,${phone_num})};</stringProp>
               <stringProp name="BeanShellAssertion.filename"></stringProp>
@@ -226,7 +226,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </ConstantThroughputTimer>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Statistica" enabled="true">
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
         <stringProp name="ThreadGroup.num_threads">${__P(statistica_code_thread)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${__P(statistica_code_rumpup)}</stringProp>
@@ -240,7 +240,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">${path_data}/frontUserPassList.csv</stringProp>
@@ -330,7 +330,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Throughput Controller 11"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Statistics">
             <stringProp name="HTTPSampler.path">api/v1/private/balance/statistics</stringProp>
@@ -378,7 +378,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -391,7 +391,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer">
               <stringProp name="ConstantTimer.delay">50</stringProp>
               <stringProp name="RandomTimer.range">10.0</stringProp>
             </GaussianRandomTimer>
