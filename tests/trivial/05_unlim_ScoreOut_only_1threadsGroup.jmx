@@ -154,7 +154,7 @@
           <stringProp name="variableNames">phone_num,password</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Auth" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Auth"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization" enabled="true">
             <stringProp name="HTTPSampler.path">/api/v1/public/auth/login</stringProp>
@@ -203,7 +203,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
             </BeanShellAssertion>
             <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer">
               <stringProp name="ConstantTimer.delay">100</stringProp>
               <stringProp name="RandomTimer.range">10.0</stringProp>
             </GaussianRandomTimer>
@@ -645,7 +645,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="variableNames">phone_num,password</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Authorization">
             <stringProp name="HTTPSampler.path">/api/v1/public/auth/login</stringProp>
             <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -665,7 +665,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="fingerprint" elementType="Header">
                   <stringProp name="Header.name">fingerprint</stringProp>
@@ -674,7 +674,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
               <stringProp name="RegexExtractor.useHeaders">true</stringProp>
               <stringProp name="RegexExtractor.refname">access_token</stringProp>
               <stringProp name="RegexExtractor.regex">Token: (.*)</stringProp>
@@ -692,7 +692,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
               <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
             </BeanShellAssertion>
             <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="false">
               <stringProp name="ConstantTimer.delay">50</stringProp>
               <stringProp name="RandomTimer.range">10.0</stringProp>
             </GaussianRandomTimer>
@@ -711,7 +711,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="variableNames">code_num</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 3" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 3">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -722,7 +722,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Create" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Create">
             <stringProp name="HTTPSampler.path">api/v1/private/paymentsystems/virtual-card/create</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -743,7 +743,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -801,13 +801,13 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           <stringProp name="ConstantTimer.delay">1000</stringProp>
         </ConstantTimer>
         <hashTree/>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
           <stringProp name="ActionProcessor.duration">10000</stringProp>
         </TestAction>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 4" enabled="true">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Throughput Controller 4">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -818,7 +818,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
           </FloatProperty>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Confirm" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Out Confirm">
             <stringProp name="HTTPSampler.path">api/v1/private/paymentsystems/virtual-card/confirm</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -840,7 +840,7 @@ ${__setProperty(phone_num,${phone_num})};</stringProp>
             <stringProp name="HTTPSampler.implementation">Java</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
