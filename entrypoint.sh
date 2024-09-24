@@ -6,20 +6,22 @@
 #
 
 # Install jmeter plugins available on /plugins volume
-if [ -d /plugins ]
+if [ -d $JMETER_CUSTOM_PLUGINS_FOLDER ]
 then
-    for plugin in /plugins/*.jar; do
-        cp $plugin $(pwd)/lib/ext
+    for plugin in ${JMETER_CUSTOM_PLUGINS_FOLDER}/*.jar; do
+        cp $plugin ${JMETER_HOME}/lib/ext
     done;
 fi
 
 # Execute JMeter command
 set -e
-freeMem=`awk '/MemFree/ { print int($2/1024) }' /proc/meminfo`
-s=$(($freeMem/10*8))
-x=$(($freeMem/10*8))
-n=$(($freeMem/10*2))
-export JVM_ARGS="-Xmn${n}m -Xms${s}m -Xmx${x}m"
+freeMem=`awk '/MemAvailable/ { print int($2/1024) }' /proc/meminfo`
+
+[[ -z ${JVM_XMN} ]] && JVM_XMN=$(($freeMem/10*2))
+[[ -z ${JVM_XMS} ]] && JVM_XMS=$(($freeMem/10*8))
+[[ -z ${JVM_XMX} ]] && JVM_XMX=$(($freeMem/10*8))
+
+export JVM_ARGS="-Xmn${JVM_XMN}m -Xms${JVM_XMS}m -Xmx${JVM_XMX}m"
 
 echo "START Running Jmeter on `date`"
 echo "JVM_ARGS=${JVM_ARGS}"

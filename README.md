@@ -7,9 +7,9 @@
 ## Image on Docker Hub
 
 Docker image for [Apache JMeter](http://jmeter.apache.org).
-This Docker image can be run as the ``jmeter`` command. 
+This Docker image can be run as the ``jmeter`` command.
 Find Images of this repo on [Docker Hub](https://hub.docker.com/r/justb4/jmeter).
-Starting version 5.4 Docker builds/pushes 
+Starting version 5.4 Docker builds/pushes
 are [executed via GitHub Workflows](.github/workflows/docker.yml).
 
 ## Donate
@@ -20,15 +20,15 @@ To support its active maintainance consider making a donation, for example via P
 
 
 ## Security Patches
-As you may have seen in the news, a new zero-day exploit has been reported against the 
-popular Log4J2 library which can allow an attacker to remotely execute code. 
-The vulnerability has been reported with [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228) 
+As you may have seen in the news, a new zero-day exploit has been reported against the
+popular Log4J2 library which can allow an attacker to remotely execute code.
+The vulnerability has been reported with [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228)
 against the log4j-core jar and has been fixed in Log4J v2.16.0.
 
 JMeter, at least in versions 5 and later uses the vulnerable Log4J versions.
 The good news though is that the vulnerability applies only to remotely accessible Java web-services.
-JMeter is a commandline/GUI tool one runs internally. Still it is good practice to 
-patch this problem. 
+JMeter is a commandline/GUI tool one runs internally. Still it is good practice to
+patch this problem.
 
 **JMeter has been updated to 5.4.2 for security CVE-2021-45046 & CVE-2021-45046**.
 
@@ -66,19 +66,40 @@ This is a standard facility of JMeter: settings in a JMX test script
 may be defined symbolically and substituted at runtime via the commandline.
 These are called JMeter User Defined Variables or UDVs.
 
-See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker 
+See [test.sh](test.sh) and the [trivial test plan](tests/trivial/test-plan.jmx) for an example of UDVs passed to the Docker
 image via [run.sh](run.sh).
 
 See also: https://www.novatec-gmbh.de/en/blog/how-to-pass-command-line-properties-to-a-jmeter-testplan/
 
+## Adjust Java Memory Options
+
+By default, JMeter reads out the available memory from the host machine and uses a fixed value of 80% of it as a maximum. If this causes Issues, there is the option to use environment variables to adjust the JVM memory Parameters:
+
+```JVM_XMN``` to adjust maximum nursery size
+
+```JVM_XMS``` to adjust initial heap size
+
+```JVM_XMX``` to adjust maximum heap size
+
+All three use values in Megabyte range.
+
 ## Installing JMeter plugins
 
-To run the container with custom JMeter plugins installed you need to mount a volume /plugins with the .jar files. For example: 
-```sh 
+To run the container with custom JMeter plugins installed you need to mount a volume /plugins with the .jar files. For example:
+```sh
 sudo docker run --name ${NAME} -i -v ${LOCAL_PLUGINS_FOLDER}:/plugins -v ${LOCAL_JMX_WORK_DIR}:${CONTAINER_JMX_WORK_DIR} -w ${PWD} ${IMAGE} $@
 ```
 
 The ${LOCAL_PLUGINS_FOLDER} must have only .jar files. Folders and another file extensions will not be considered.
+
+### Configuring the custom JMeter plugins folder location
+
+It is also possible to define an alternate location to the custom JMeter plugins folder. Simply define a environment variable called `JMETER_CUSTOM_PLUGINS_FOLDER` with the desired folder path like in the example bellow:
+
+```sh
+sudo docker run --name ${NAME} -i -e JMETER_CUSTOM_PLUGINS_FOLDER=/jmeter/plugins -v ${LOCAL_PLUGINS_FOLDER}:/jmeter/plugins -v ${LOCAL_JMX_WORK_DIR}:${CONTAINER_JMX_WORK_DIR} -w ${PWD} ${IMAGE} $@
+```
+
 
 ## Do it for real: detailed build/run/test
 
@@ -97,15 +118,15 @@ Contribution by @wilsonmar
    ./build.sh
    ```
 
-   If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder. 
-   
+   If you view this file, the <strong>docker build</strong> command within the script is for a specific version of JMeter and implements the <strong>Dockerfile</strong> in the same folder.
+
    If you view the Dockerfile, notice the `JMETER_VERSION` specified is the same as the one in the build.sh script. The FROM keyword specifies the Alpine operating system, which is very small (less of an attack surface). Also, no JMeter plug-ins are used.
-   
+
    At the bottom of the Dockerfile is the <strong>entrypoint.sh</strong> file. If you view it, that's where JVM memory settings are specified for <strong>jmeter</strong> before it is invoked. PROTIP: Such settings need to be adjusted for tests of more complexity.
 
    The last line in the response should be:
-   
-   <tt>Successfully tagged justb4/jmeter:5.4</tt>
+
+   <tt>Successfully tagged justb4/jmeter:5.5</tt>
 
 1. Run the test script:
 
@@ -114,7 +135,7 @@ Contribution by @wilsonmar
    ```
 
    If you view the script, note it invokes the <strong>run.sh</strong> script file stored at the repo's root. View that file to see that it specifies docker image commands.
-   
+
    File and folder names specified in the test.sh script is reflected in the last line in the response for its run:
 
    <pre>
@@ -132,24 +153,24 @@ Contribution by @wilsonmar
    THREADS=10 \
    TEST=trivial \
    make
-   ```   
+   ```
 
 1. Switch to your machine's Folder program and navigate to the folder containing files which replaces files cloned in from GitHub:
-   
+
    ```
    cd tests/trivial
    ```
-   
+
    The files are:
-   
+
    * jmeter.log
    * reports folder (see below)
    * test-plan.jmx containing the JMeter test plan.
    * test-plan.jtl containing statistics from the run displayed by the index.html file.
-   
-   
+
+
 1. Navigate into the <strong>report</strong> folder and open the <strong>index.html</strong> file to pop up a browser window displaying the run report. On a Mac Terminal:
-   
+
    ```
    cd report
    open index.html
@@ -162,13 +183,13 @@ Contribution by @wilsonmar
 
 ## Specifics
 
-The Docker image built from the 
+The Docker image built from the
 [Dockerfile](Dockerfile) inherits from the [Alpine Linux](https://www.alpinelinux.org) distribution:
 
-> "Alpine Linux is built around musl libc and busybox. This makes it smaller 
-> and more resource efficient than traditional GNU/Linux distributions. 
-> A container requires no more than 8 MB and a minimal installation to disk 
-> requires around 130 MB of storage. 
+> "Alpine Linux is built around musl libc and busybox. This makes it smaller
+> and more resource efficient than traditional GNU/Linux distributions.
+> A container requires no more than 8 MB and a minimal installation to disk
+> requires around 130 MB of storage.
 > Not only do you get a fully-fledged Linux environment but a large selection of packages from the repository."
 
 See https://hub.docker.com/_/alpine/ for Alpine Docker images.
