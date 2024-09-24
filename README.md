@@ -1,5 +1,7 @@
 [![Docker Build](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml/badge.svg)](https://github.com/justb4/docker-jmeter/actions/workflows/docker.yml)
 [![Patreon](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/justb4)
+![GitHub license](https://img.shields.io/github/license/justb4/docker-jmeter)
+![Docker Pulls](https://img.shields.io/docker/pulls/justb4/jmeter.svg)
 
 # docker-jmeter
 ## Image on Docker Hub
