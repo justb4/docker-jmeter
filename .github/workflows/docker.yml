@@ -34,7 +34,7 @@ jobs:
         id: prep
         run: |
           DOCKER_IMAGE=justb4/jmeter
-          VERSION="5.5"
+          VERSION="5.6.2"
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
