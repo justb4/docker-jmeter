@@ -38,4 +38,5 @@ COPY entrypoint.sh /
 
 WORKDIR	${JMETER_HOME}
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN apk add --no-cache tini
+ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
